@@ -30,7 +30,15 @@ class Licht extends IPSModule
         $this->RegisterTimer('Nachlauf', 0, 'IPS_RequestAction($_IPS[\'TARGET\'], \'NachlaufAbgelaufen\', 0);');
         $this->RegisterTimer('Start', 0, 'IPS_RequestAction($_IPS[\'TARGET\'], \'StartSchritt\', 0);');
 
-        $this->RegisterVariableBoolean('Licht', 'Licht', '~Switch', 1);
+        $this->RegisterVariableBoolean('Licht', 'Licht', [
+            'PRESENTATION'   => VARIABLE_PRESENTATION_SWITCH,
+            'USE_ICON_FALSE' => true,
+            'ICON_TRUE'      => 'lightbulb-on',
+            'ICON_FALSE'     => 'lightbulb',
+            'GLOW_COLOR'     => 0xFFC766,
+            'GLOW_INTENSITY' => 50,
+            'USAGE_TYPE'     => 0
+        ], 1);
         $this->RegisterVariableString('Grund', 'Grund', '', 2);
         $this->EnableAction('Licht');
     }
