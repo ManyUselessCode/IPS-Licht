@@ -1,0 +1,11 @@
+{
+  "id": "{89C7DCF8-1928-4DF8-B5AE-90F966F4AB15}",
+  "name": "Licht",
+  "type": 3,
+  "vendor": "",
+  "aliases": ["Licht"],
+  "parentRequirements": [],
+  "childRequirements": [],
+  "implemented": [],
+  "prefix": "LICHT"
+}

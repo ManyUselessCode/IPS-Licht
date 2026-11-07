@@ -1,0 +1,78 @@
+{
+  "elements": [
+    {
+      "type": "List",
+      "name": "Lampen",
+      "caption": "Lampen",
+      "rowCount": 4,
+      "add": true,
+      "delete": true,
+      "columns": [
+        { "caption": "Schalten (Instanz)", "name": "SchaltenID", "width": "50%", "add": 0, "edit": { "type": "SelectInstance" } },
+        { "caption": "Status (Variable)", "name": "StatusID", "width": "auto", "add": 0, "edit": { "type": "SelectVariable" } }
+      ]
+    },
+    {
+      "type": "List",
+      "name": "Tasten",
+      "caption": "Tasten",
+      "rowCount": 4,
+      "add": true,
+      "delete": true,
+      "columns": [
+        { "caption": "Name (steht im Grund)", "name": "Name", "width": "50%", "add": "", "edit": { "type": "ValidationTextBox" } },
+        { "caption": "Taste (Variable)", "name": "VariableID", "width": "auto", "add": 0, "edit": { "type": "SelectVariable" } }
+      ]
+    },
+    {
+      "type": "List",
+      "name": "LedsMdt",
+      "caption": "MDT-LEDs (grün = an, rot = aus)",
+      "rowCount": 3,
+      "add": true,
+      "delete": true,
+      "columns": [
+        { "caption": "LED Farbe (Instanz)", "name": "InstanceID", "width": "auto", "add": 0, "edit": { "type": "SelectInstance" } }
+      ]
+    },
+    {
+      "type": "List",
+      "name": "LedsJung",
+      "caption": "Jung-LEDs (grün = an, rot = aus)",
+      "rowCount": 3,
+      "add": true,
+      "delete": true,
+      "columns": [
+        { "caption": "LED Rot (Instanz)", "name": "RotID", "width": "50%", "add": 0, "edit": { "type": "SelectInstance" } },
+        { "caption": "LED Grün (Instanz)", "name": "GruenID", "width": "auto", "add": 0, "edit": { "type": "SelectInstance" } }
+      ]
+    },
+    {
+      "type": "List",
+      "name": "Melder",
+      "caption": "Präsenzmelder (schalten nur aus, nie ein)",
+      "rowCount": 2,
+      "add": true,
+      "delete": true,
+      "columns": [
+        { "caption": "Präsenz (Variable)", "name": "VariableID", "width": "auto", "add": 0, "edit": { "type": "SelectVariable" } }
+      ]
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "Nachlauf",
+      "caption": "Nachlauf",
+      "suffix": "Sekunden",
+      "minimum": 0
+    },
+    {
+      "type": "Label",
+      "caption": "Nachlauf 0: Der Präsenzmelder schaltet aus. Größer 0: Präsenz wird ignoriert, das Licht geht nach dieser Zeit aus."
+    }
+  ],
+  "actions": [],
+  "status": [
+    { "code": 104, "icon": "inactive", "caption": "Keine Lampe eingestellt" },
+    { "code": 201, "icon": "error", "caption": "Eine eingestellte ID fehlt oder ist ungültig, siehe Log" }
+  ]
+}
