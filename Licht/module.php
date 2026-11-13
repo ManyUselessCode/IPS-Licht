@@ -150,7 +150,9 @@ class Licht extends IPSModule
             $this->RegisterReference($led['InstanceID']);
         }
         foreach ($this->Liste('LedsJung') as $led) {
-            $this->RegisterReference($led['RotID']);
+            if (($led['RotID'] ?? 0) > 0) {
+                $this->RegisterReference($led['RotID']);
+            }
             $this->RegisterReference($led['GruenID']);
         }
 
@@ -186,8 +188,10 @@ class Licht extends IPSModule
             }
         }
         foreach ($this->Liste('LedsJung') as $led) {
-            if (!IPS_InstanceExists($led['RotID']) || !IPS_InstanceExists($led['GruenID'])) {
-                $falsch[] = 'Jung-LED ' . $led['RotID'] . '/' . $led['GruenID'];
+            // LED Rot darf fehlen: dann leuchtet nur Grün, solange das Licht an ist
+            $rot = (int) ($led['RotID'] ?? 0);
+            if (($rot > 0 && !IPS_InstanceExists($rot)) || !IPS_InstanceExists($led['GruenID'])) {
+                $falsch[] = 'Jung-LED ' . $rot . '/' . $led['GruenID'];
             }
         }
         return count($falsch) ? 'Ungültige IDs: ' . implode(', ', $falsch) : '';
@@ -281,7 +285,9 @@ class Licht extends IPSModule
             @KNX_WriteDPT5($led['InstanceID'], $an ? self::LED_GRUEN : self::LED_ROT);
         }
         foreach ($this->Liste('LedsJung') as $led) {
-            @KNX_WriteDPT1($led['RotID'], !$an);
+            if (($led['RotID'] ?? 0) > 0) {
+                @KNX_WriteDPT1($led['RotID'], !$an);
+            }
             @KNX_WriteDPT1($led['GruenID'], $an);
         }
     }

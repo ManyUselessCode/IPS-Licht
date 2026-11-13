@@ -38,12 +38,12 @@
     {
       "type": "List",
       "name": "LedsJung",
-      "caption": "Jung-LEDs (grün = an, rot = aus)",
+      "caption": "Jung-LEDs (grün = an, rot = aus; ohne LED Rot nur grün = an)",
       "rowCount": 3,
       "add": true,
       "delete": true,
       "columns": [
-        { "caption": "LED Rot (Instanz)", "name": "RotID", "width": "50%", "add": 0, "edit": { "type": "SelectInstance" } },
+        { "caption": "LED Rot (Instanz, optional)", "name": "RotID", "width": "50%", "add": 0, "edit": { "type": "SelectInstance" } },
         { "caption": "LED Grün (Instanz)", "name": "GruenID", "width": "auto", "add": 0, "edit": { "type": "SelectInstance" } }
       ]
     },
